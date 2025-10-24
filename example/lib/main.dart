@@ -20,9 +20,10 @@ class MyApp extends StatelessWidget {
         animation: theme,
         builder: (context, _) {
           return MaterialApp(
-            locale: const Locale('en'),
+            locale: const Locale('pl'),
             supportedLocales: const [
               Locale('en'),
+              Locale('pl'),
             ],
             localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,

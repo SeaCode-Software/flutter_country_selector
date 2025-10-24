@@ -21,6 +21,7 @@ import 'country_selector_localization_it.dart';
 import 'country_selector_localization_ku.dart';
 import 'country_selector_localization_nb.dart';
 import 'country_selector_localization_nl.dart';
+import 'country_selector_localization_pl.dart';
 import 'country_selector_localization_pt.dart';
 import 'country_selector_localization_ru.dart';
 import 'country_selector_localization_sv.dart';
@@ -86,13 +87,15 @@ import 'country_selector_localization_zh.dart';
 /// property.
 abstract class CountrySelectorLocalization {
   CountrySelectorLocalization(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static CountrySelectorLocalization? of(BuildContext context) {
     return Localizations.of<CountrySelectorLocalization>(
-        context, CountrySelectorLocalization);
+      context,
+      CountrySelectorLocalization,
+    );
   }
 
   static const LocalizationsDelegate<CountrySelectorLocalization> delegate =
@@ -110,11 +113,11 @@ abstract class CountrySelectorLocalization {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -134,6 +137,7 @@ abstract class CountrySelectorLocalization {
     Locale('ku'),
     Locale('nb'),
     Locale('nl'),
+    Locale('pl'),
     Locale('pt'),
     Locale('ru'),
     Locale('sv'),
@@ -142,7 +146,7 @@ abstract class CountrySelectorLocalization {
     Locale('ur'),
     Locale('uz'),
     Locale('vi'),
-    Locale('zh')
+    Locale('zh'),
   ];
 
   /// No description provided for @noResultMessage.
@@ -1671,37 +1675,39 @@ class _CountrySelectorLocalizationDelegate
   @override
   Future<CountrySelectorLocalization> load(Locale locale) {
     return SynchronousFuture<CountrySelectorLocalization>(
-        lookupCountrySelectorLocalization(locale));
+      lookupCountrySelectorLocalization(locale),
+    );
   }
 
   @override
   bool isSupported(Locale locale) => <String>[
-        'ar',
-        'ca',
-        'ckb',
-        'de',
-        'el',
-        'en',
-        'es',
-        'fa',
-        'fr',
-        'he',
-        'hi',
-        'hu',
-        'it',
-        'ku',
-        'nb',
-        'nl',
-        'pt',
-        'ru',
-        'sv',
-        'tr',
-        'uk',
-        'ur',
-        'uz',
-        'vi',
-        'zh'
-      ].contains(locale.languageCode);
+    'ar',
+    'ca',
+    'ckb',
+    'de',
+    'el',
+    'en',
+    'es',
+    'fa',
+    'fr',
+    'he',
+    'hi',
+    'hu',
+    'it',
+    'ku',
+    'nb',
+    'nl',
+    'pl',
+    'pt',
+    'ru',
+    'sv',
+    'tr',
+    'uk',
+    'ur',
+    'uz',
+    'vi',
+    'zh',
+  ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_CountrySelectorLocalizationDelegate old) => false;
@@ -1742,6 +1748,8 @@ CountrySelectorLocalization lookupCountrySelectorLocalization(Locale locale) {
       return CountrySelectorLocalizationNb();
     case 'nl':
       return CountrySelectorLocalizationNl();
+    case 'pl':
+      return CountrySelectorLocalizationPl();
     case 'pt':
       return CountrySelectorLocalizationPt();
     case 'ru':
@@ -1763,8 +1771,9 @@ CountrySelectorLocalization lookupCountrySelectorLocalization(Locale locale) {
   }
 
   throw FlutterError(
-      'CountrySelectorLocalization.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'CountrySelectorLocalization.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }
