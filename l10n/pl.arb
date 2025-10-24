@@ -5,7 +5,7 @@
   "typeToSearch": "Wpisz tutaj, aby wyszukać kraj",
   "selectCountry": "Wybierz {country}",
   "@selectCountry": {
-    "description": "Semantyka pola wyszukiwania",
+    "description": "Semantic of the search box",
     "placeholders": {
       "country": {
         "type": "String"
